@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.flixpartonedebug.DetailActivity;
 import com.example.flixpartonedebug.MainActivity;
 import com.example.flixpartonedebug.R;
 import com.example.flixpartonedebug.models.Movie;
@@ -54,14 +56,14 @@ public class MovieAdapator extends RecyclerView.Adapter<MovieAdapator.ViewHolder
 
     @Override
     public int getItemCount() {
-        return 0;
+        return movies.size();
     }
 
 
     // Custom View holder
     public class ViewHolder extends RecyclerView.ViewHolder {
         // Declare class values
-        ConstraintLayout rlContainer;
+        RelativeLayout rlContainer;
         TextView title;
         TextView overview;
         ImageView poster;
@@ -91,7 +93,7 @@ public class MovieAdapator extends RecyclerView.Adapter<MovieAdapator.ViewHolder
             rlContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, MainActivity.class);
+                    Intent intent = new Intent(context, DetailActivity.class);
                     intent.putExtra("movie", Parcels.wrap(movie));
                     context.startActivity(intent);
                 }

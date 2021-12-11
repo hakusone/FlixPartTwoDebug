@@ -46,7 +46,7 @@ public class DetailActivity extends YouTubeBaseActivity {
         ratingBar.setRating((float) movie.getRating());
 
         AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
-        asyncHttpClient.get(String.format(VIDEOS_URL, 209112), new JsonHttpResponseHandler() {
+        asyncHttpClient.get(String.format(VIDEOS_URL, movie.getMovieId()), new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
                 try {
@@ -76,7 +76,7 @@ public class DetailActivity extends YouTubeBaseActivity {
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 Log.d(TAG, "onInitializeSuccess");
                 Log.d(TAG, youtubeKey);
-                youTubePlayer.cueVideo("5xVh-7ywKpE");
+                youTubePlayer.cueVideo(youtubeKey);
             }
 
             @Override
